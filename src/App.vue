@@ -81,79 +81,51 @@ export default {
 </style>
 
 <template>
-  <section v-if="error">
-    <div class="container">
-      <h1 class="text-center">KODINGAN ERROR!</h1>
-    </div>
-  </section>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
 
-  <section v-else>
-    <div v-if="loading" class="container">
-      <h1 class="text-center">Loading...</h1>
+    <div class="container-fluid ">
+      <a class="navbar-brand" href="#">Al-Qur'anku</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item text-white">
+            <a class="nav-link active" aria-current="page" href="#"><router-link to="/" style="color: black;">Home</router-link></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><router-link :to="{ name: 'search' }" style="color: black;" >Search</router-link></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Juz</a>
+            <ul class="dropdown-menu">
+              <li v-for="juz in juzs" :key="juz.id">
+                <router-link :to="{ name: 'juzs', params: { id: juz.id } }" class="dropdown-item">{{ juz.juz_number }}
+                </router-link>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">Surah</a>
+            <ul class="dropdown-menu">
+              <li v-for="surah in surahs" :key="surah.id">
+                <router-link :to="{ name: 'surahs', params: { id: surah.id } }" class="dropdown-item">{{
+                    surah.name_complex
+                  }}</router-link>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><router-link to="/about" style="color: black;">About Us</router-link></a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <div v-else class="container">
-      <ul class="nav nav-pills justify-content-center">
-        <li class="nav-item">
-          <router-link
-              :to="{ name: 'search' }"
-              class="y nav-link"
-              style="color: black"
-          >Search</router-link
-          >
-        </li>
-        <li class="nav-item dropdown">
-          <a
-              class="y nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false"
-              style="color: black"
-          >Juz</a
-          >
-          <ul class="dropdown-menu">
-            <li v-for="juz in juzs" :key="juz.id">
-              <router-link
-                  :to="{ name: 'juzs', params: { id: juz.id } }"
-                  class="dropdown-item"
-              >{{ juz.juz_number }}
-              </router-link>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-              class="y nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-expanded="false"
-              style="color: black"
-          >Surah</a
-          >
-          <ul class="dropdown-menu">
-            <li v-for="surah in surahs" :key="surah.id">
-              <router-link
-                  :to="{ name: 'surahs', params: { id: surah.id } }"
-                  class="dropdown-item"
-                  style="color: black"
-              >{{ surah.name_complex }}</router-link
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <router-link
-              :to="{ name: 'random' }"
-              class="y nav-link"
-              style="color: black"
-          >Random</router-link
-          >
-        </li>
-      </ul>
-      <RouterView />
-    </div>
-  </section>
-
+  </nav>
+  <RouterView />
 </template>
+<style>
+
+</style>

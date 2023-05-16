@@ -122,7 +122,7 @@ export default {
 
 <style>
 .x {
-  font-family: Joyce;
+  font-family: sans-serif;
   margin-top: 200px;
   color: #18497e;
 }
